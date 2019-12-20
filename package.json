@@ -1,0 +1,30 @@
+{
+  "name": "full-stack-to-do",
+  "version": "1.0.0",
+  "description": "basic to-do",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattbeachey/full-stack-to-do.git"
+  },
+  "author": "Matt Beachey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattbeachey/full-stack-to-do/issues"
+  },
+  "homepage": "https://github.com/mattbeachey/full-stack-to-do#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.0.2",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
+}

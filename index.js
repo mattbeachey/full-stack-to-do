@@ -16,10 +16,12 @@ app.use(express.json());
 //routes
 app.use(express.static("public"))
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
+require("./routes/api-routes.js")(app);
 
+// app.get("/", function (req, res) {
+//     res.sendFile(path.join(__dirname, "index.html"));
+// });
+//the route you had before^^^^^
 
 
 //function to add to database

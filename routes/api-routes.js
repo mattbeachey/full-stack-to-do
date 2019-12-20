@@ -15,5 +15,15 @@ module.exports = function(app){
             res.json(todos)
         });
     });
+    console.log("setting up delete")
+    app.delete("/api/todos/:id", async function(req, res){
+        console.log(req.params.id)
+        const todo = await db.Todo.destroy({where: {id: req.params.id}})
+        res.json(todo);
+    })
+
+    // app.delete("/api/todos/:id", function(req, res){
+    //     res.send(`"hi", ${req.params.id}`)
+    // })
 
 };

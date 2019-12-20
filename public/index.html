@@ -15,22 +15,52 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        function deleteButton(id) {
+            console.log(id)
+            axios.delete(`/api/todos/${id}`)
+                .then(function (response) {
+                    console.log(response);
+                    getTheTodos();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        function getTheTodos() {
+            axios.get('/api/todos')
+                .then(function (response) {
+                    console.log(response);
+                    const todosEl = document.getElementById("todos")
+                    const todoElStr = response.data.map(todo => `<div>${todo.task}</div><button onclick="deleteButton(${todo.id})" id="${todo.id}">Done</button>`)
+                    console.log(todoElStr)
+
+                    const innerHTML = todoElStr.join("\n<hr>\n")
+                    todosEl.innerHTML = innerHTML
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        };
+
+
         axios.get('/api/todos')
-        .then(function (response) {
+            .then(function (response) {
                 console.log(response);
                 const todosEl = document.getElementById("todos")
-                const todoElStr = response.data.map(todo => `<div>${todo.task}</div>`)
+                const todoElStr = response.data.map(todo => `<div>${todo.task}</div><button onclick="deleteButton(${todo.id})" id="${todo.id}">Done</button>`)
                 console.log(todoElStr)
-                
+
                 const innerHTML = todoElStr.join("\n<hr>\n")
                 todosEl.innerHTML = innerHTML
 
-
-                
             })
             .catch(function (error) {
                 console.log(error);
             });
+
 
 
         axios.post('/api/todos', {

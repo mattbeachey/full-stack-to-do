@@ -11,9 +11,28 @@
 <body>
 
     <h1> To Do, Coming Soon!</h1>
+    <div id="todos"></div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        axios.get('/api/todos')
+        .then(function (response) {
+                console.log(response);
+                const todosEl = document.getElementById("todos")
+                const todoElStr = response.data.map(todo => `<div>${todo.task}</div>`)
+                console.log(todoElStr)
+                
+                const innerHTML = todoElStr.join("\n<hr>\n")
+                todosEl.innerHTML = innerHTML
+
+
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
         axios.post('/api/todos', {
             task: "eat lunch"
         })
